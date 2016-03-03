@@ -1,0 +1,12 @@
+body {
+   	padding: 20px;
+   	color: pink ;
+  	font: 20px "Lucida Grande";
+  	font-weight:bolder;
+  	background-repeat: no-repeat;
+  	background-size: 700px 350px, 200px 150px;
+  	background-image: url('gif.gif'), url('u.jpg');
+  	background-position: right top, right bottom;
+  	background-color: purple;
+}
+
