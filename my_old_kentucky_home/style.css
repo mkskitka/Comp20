@@ -10,3 +10,7 @@ body {
   	background-color: purple;
 }
 
+.pic{
+	size: 50px 50px;
+	position: bottom;
+}
