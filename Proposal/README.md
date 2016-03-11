@@ -26,7 +26,12 @@ Algorithms/Special Techniques:
   -Search functions for recipe tags
 
 Electronic Mockups:
-  ![Home](home_page.png "Home")
-  ![Profile](profile.png "Profile")
-  ![Create](create_page.png "Create")
-  ![Map](map_page.png "Map")
+
+####Home Page
+![Home](home_page.png "Home")
+####Profile Page
+![Profile](profile.png "Profile")
+####Create Page
+![Create](create_page.png "Create")
+####Map Page
+![Map](map_page.png "Map")
