@@ -23,5 +23,10 @@ Features to be Implemented:
 Data to be Used and Collected: Users will upload recipes and tips which will be stored in a database
 
 Algorithms/Special Techniques:
-  -Search functions
-  -
+  -Search functions for recipe tags
+
+Electronic Mockups:
+  ![Home](home_page.png "Home")
+  ![Profile](profile.png "Profile")
+  ![Create](create_page.png "Create")
+  ![Map](map_page.png "Map")
