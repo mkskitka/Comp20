@@ -35,3 +35,7 @@ Electronic Mockups:
 ![Create](create_page.png "Create")
 ####Map Page
 ![Map](map_page.png "Map")
+
+#Comments by Ming
+* What external APIs and/or data sets will your team be using?
+* 14 / 15
