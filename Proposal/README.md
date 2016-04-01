@@ -13,6 +13,15 @@ Features to be Implemented:
   -Users can search for recipes based on their tags
   -Users can rate other recipes
   -A main feed will display all recipes in chronological order
+  -User can save or like recipes
+  -user can add the ingrediants of a specific recipe to their shopping cart for future grocery runs
+  
+  
+  We will have filter specifications to reorder the user's main feed of recipes based on their preferences and dietary needs
+  -a degree of difficulty filter(is the meal difficult to make)
+  -a prep time filter (20, 30, 50min)
+  -dietary filter (gluten free etc)
+  
 
   OUT OF PICK 4:
   -Geolocation: Users can find stores near them to buy ingredients for recipes
