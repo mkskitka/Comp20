@@ -12,11 +12,12 @@
 	var raw;
 	var name = "EDMUND_ROMERO";
 	var url = "https://defense-in-derpth.herokuapp.com/sendLocation";
-	var myLat;
-	var myLng;
+	var myLat =0;
+	var myLng =0;
 	var request = new XMLHttpRequest();
 	var marker;
 	var min;
+	me = new google.maps.LatLng(myLat, myLng);
 	
 	   
 	function init() {
@@ -26,13 +27,13 @@
 			zoom: 15,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 			};
-		var me = new google.maps.LatLng(myLat, myLng);
 		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-		getMyLocation(me);
+		console.log("HERE");
+		getMyLocation();
 
 	}
 
-	function getMyLocation(me) {
+	function getMyLocation() {
 		if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
 			navigator.geolocation.getCurrentPosition(function(position) {
 				myLat = position.coords.latitude;
