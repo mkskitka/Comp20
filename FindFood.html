@@ -10,8 +10,9 @@
         center: {lat: 42.4069, lng: -71.1198},
         zoom: 14
       };
-      //var infoWindow = new google.maps.InfoWindow();
+      var infoWindow = new google.maps.InfoWindow();
       var map;
+      var my_icon = "Tom_Haverford.jpg";
 
       function initialize() {
         map = new google.maps.Map(document.getElementById("map_canvas"),
@@ -33,6 +34,17 @@
       function gotoLocation() {
         my_coords = new google.maps.LatLng(currLat, currLng);
         map.panTo(my_coords);
+
+        new_marker = new google.maps.Marker({
+          position: my_coords,
+          title: "Here I am!",
+          icon: my_icon
+        });
+        new_marker.setMap(map);
+        new_marker.addListener('click', function() {
+          infoWindow.setContent(this.title);
+          infoWindow.open(this.getMap(), this);
+        });
       }
 
     </script>
