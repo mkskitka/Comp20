@@ -61,24 +61,75 @@
           if (status == google.maps.places.PlacesServiceStatus.OK) {
             for (i = 0; i < results.length; i++) {
               var groc_store = results[i];
+              console.log(groc_store);
               createMarker(results[i]);
             }
+
           }
         }
         function createMarker(groc_store) {
-          storeLoc = groc_store.geometry.location;
+          var storeLoc = groc_store.geometry.location;
+          var store_lat = groc_store.geometry.location.lat();
+          var store_lng = groc_store.geometry.location.lng();
           var marker = new google.maps.Marker({
             map: map,
             position: storeLoc
           });
 
           google.maps.event.addListener(marker, 'click', function(){
-            infoWindow.setContent(groc_store.name);
+            var isOpen;
+            if (groc_store.opening_hours == undefined)
+              isOpen = "Unspecified";
+            else if (groc_store.opening_hours.open_now)
+              isOpen = "Yes";
+            else
+              isOpen = "No";
+
+            var rating;
+            if (groc_store.rating == undefined)
+              rating = "None";
+            else
+              rating = groc_store.rating;
+
+            var content = "<p id='store_name'>" + groc_store.name + "</p>" + "<p>" + groc_store.vicinity + "</p>" +
+              "<p>Distance from me: " + findDistance(currLat, currLng, store_lat, store_lng) + " miles </p>" +
+              "<p>Open now: " + isOpen + "</p>" + "<p> Rating: " + rating + "</p>";
+
+            /*if (groc_store.photos != undefined) {
+              var photo = groc_store.photos[0];
+              content = photo + content;
+            }*/
+
+            infoWindow.setContent(content);
             infoWindow.open(map, this);
           });
         }
         service.nearbySearch(request, callback);
+      }
 
+      function findDistance(lat1, lon1, lat2, lon2) {
+        var R = 6371; // kilometers
+        var rad1 = toRadians(lat1);
+        var rad2 = toRadians(lat2);
+        var dLat = toRadians(lat2-lat1);
+        var dLon = toRadians(lon2-lon1);
+        var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(rad1) * Math.cos(rad2) *
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+        var distance = R * c;
+        distance = convert_to_miles(distance);
+        distance = Math.round(distance * 1000) / 1000;
+        return distance;
+      }
+
+      function toRadians(coord) {
+        return coord * Math.PI / 180;
+      }
+
+      function convert_to_miles(dis) {
+        return dis * 0.621371;
       }
     </script>
   </head>
