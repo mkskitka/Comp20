@@ -38,7 +38,7 @@
         //set self marker
         new_marker = new google.maps.Marker({
           position: my_coords,
-          title: "Here I am!",
+          title: "Here you are!",
           icon: my_icon
         });
         new_marker.setMap(map);
@@ -61,7 +61,6 @@
           if (status == google.maps.places.PlacesServiceStatus.OK) {
             for (i = 0; i < results.length; i++) {
               var groc_store = results[i];
-              console.log(groc_store);
               createMarker(results[i]);
             }
 
@@ -94,11 +93,6 @@
             var content = "<p id='store_name'>" + groc_store.name + "</p>" + "<p>" + groc_store.vicinity + "</p>" +
               "<p>Distance from me: " + findDistance(currLat, currLng, store_lat, store_lng) + " miles </p>" +
               "<p>Open now: " + isOpen + "</p>" + "<p> Rating: " + rating + "</p>";
-
-            /*if (groc_store.photos != undefined) {
-              var photo = groc_store.photos[0];
-              content = photo + content;
-            }*/
 
             infoWindow.setContent(content);
             infoWindow.open(map, this);
