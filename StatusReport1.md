@@ -15,3 +15,6 @@ Ben- research asynchronous content loadin and how to retrieve and display data w
 Emily- research what is the best database to use
 Julia- fixing up google map. researching facebook login technique and is looking for a database of grocery stores/api that we can use 
 on our find food page
+
+#Comments by Ming
+* " looking for a database of grocery stores/api that we can use on our find food page" --let me know if you can find one.  I believe another team is looking for one.
