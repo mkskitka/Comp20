@@ -6,6 +6,28 @@
   <head>
 
   <body>
+
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1789889064572349',
+          xfbml      : true,
+          version    : 'v2.5'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+
+
+
     <p class="logo"> <img src = "Feed.Your.Self.2.jpg" alt = "Feed Your Self"> </p>
     <p class="tabs"> <a href = "Create.html" class = "Link"> Create </a> </p>
     <p class="tabs"> <a href = "Profile.html" class = "Link"> Profile </a> </p>
