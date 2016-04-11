@@ -27,6 +27,8 @@ html {
   width: 100%;
 }
 
-#store_name {
-  font-weight: bold;
+.createForm img {
+  cursor: pointer;
+  max-width: 299px;
+  max-height: 272px;
 }
