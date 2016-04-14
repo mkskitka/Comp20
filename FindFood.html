@@ -1,10 +1,134 @@
 <!doctype html>
 <html>
   <head>
-    <link href = "home.css" rel = "stylesheet">
     <title>Find Food</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <link href = "home.css" rel = "stylesheet"/>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true&libraries=places"></script>
+    <script>
+      var myOptions = {
+        center: {lat: 42.4069, lng: -71.1198},
+        zoom: 14
+      };
+      var infoWindow = new google.maps.InfoWindow();
+      var map;
+      var service;
+      var my_icon = "Tom_Haverford.jpg";
+
+      function initialize() {
+        map = new google.maps.Map(document.getElementById("map_canvas"),
+                                                                  myOptions);
+        getLocation();
+      }
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            currLat = position.coords.latitude;
+            currLng = position.coords.longitude;
+            gotoLocation();
+          });
+        }
+        else {
+          alert("Geolocation is not supported by this web browser.");
+        }
+      }
+      function gotoLocation() {
+        my_coords = new google.maps.LatLng(currLat, currLng);
+        map.panTo(my_coords);
+        //set self marker
+        new_marker = new google.maps.Marker({
+          position: my_coords,
+          title: "Here you are!",
+          icon: my_icon
+        });
+        new_marker.setMap(map);
+        new_marker.addListener('click', function() {
+          infoWindow.setContent(this.title);
+          infoWindow.open(this.getMap(), this);
+        });
+        findStores();
+      }
+
+      function findStores() {
+        var request = {
+          location: my_coords,
+          radius: '2000',
+          types: ['grocery_or_supermarket']
+        };
+        service = new google.maps.places.PlacesService(map);
+
+        function callback(results, status) {
+          if (status == google.maps.places.PlacesServiceStatus.OK) {
+            for (i = 0; i < results.length; i++) {
+              var groc_store = results[i];
+              createMarker(results[i]);
+            }
+
+          }
+        }
+        function createMarker(groc_store) {
+          var storeLoc = groc_store.geometry.location;
+          var store_lat = groc_store.geometry.location.lat();
+          var store_lng = groc_store.geometry.location.lng();
+          var marker = new google.maps.Marker({
+            map: map,
+            position: storeLoc
+          });
+
+          google.maps.event.addListener(marker, 'click', function(){
+            var isOpen;
+            if (groc_store.opening_hours == undefined)
+              isOpen = "Unspecified";
+            else if (groc_store.opening_hours.open_now)
+              isOpen = "Yes";
+            else
+              isOpen = "No";
+
+            var rating;
+            if (groc_store.rating == undefined)
+              rating = "None";
+            else
+              rating = groc_store.rating;
+
+            var content = "<p id='store_name'>" + groc_store.name + "</p>" + "<p>" + groc_store.vicinity + "</p>" +
+              "<p>Distance from me: " + findDistance(currLat, currLng, store_lat, store_lng) + " miles </p>" +
+              "<p>Open now: " + isOpen + "</p>" + "<p> Rating: " + rating + "</p>";
+
+            infoWindow.setContent(content);
+            infoWindow.open(map, this);
+          });
+        }
+        service.nearbySearch(request, callback);
+      }
+
+      function findDistance(lat1, lon1, lat2, lon2) {
+        var R = 6371; // kilometers
+        var rad1 = toRadians(lat1);
+        var rad2 = toRadians(lat2);
+        var dLat = toRadians(lat2-lat1);
+        var dLon = toRadians(lon2-lon1);
+        var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(rad1) * Math.cos(rad2) *
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+        var distance = R * c;
+        distance = convert_to_miles(distance);
+        distance = Math.round(distance * 1000) / 1000;
+        return distance;
+      }
+
+      function toRadians(coord) {
+        return coord * Math.PI / 180;
+      }
+
+      function convert_to_miles(dis) {
+        return dis * 0.621371;
+      }
+    </script>
   </head>
-  <body>
+  <body id="map_page" onload="initialize()">
     <h1>Find Food</h1>
+    <div id="map_canvas"></div>
   </body>
 </html>

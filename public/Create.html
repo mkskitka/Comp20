@@ -1,0 +1,45 @@
+<!doctype html>
+
+<html>
+
+  <head>
+    <title>Create</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src='create.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <h1>Create</h1>
+    <div class="container">
+      <div class="createForm">
+
+     		<form action="" method="post" enctype="multipart/form-data" role="form">
+          <div class="form-group">
+      		  <label for="title">Title</label>
+            <input type="text" class="form-control" id="title">
+          </div>
+
+          <div class="form-group">
+      		  <input type="file" id="photo" style="display:none" onchange="loadFile(event);"/><br>
+            <label for="photo">
+              <img src="imageSpot.png" id="output" alt="Your Image"/>
+            </label><br>
+          </div>
+
+          <div class="form=group">
+            <div id="itemRows">
+              <label>Amount</label> <input type="text" id="amount"name="add_qty" size="4" /> <label>Ingredient</label> <input type="text" name="add_name"/> <input onclick="addRow(this.form);" type="button" class="btn btn-default" value="Add row" />
+            </div>
+          </div>
+
+      		<input type="submit" class="btn btn-default" value="Submit">
+      	</form>
+
+      </div>
+    </div>
+  </body>
+
+</html>
