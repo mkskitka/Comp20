@@ -104,6 +104,17 @@
          });
        }
 
+//
+  /*     FB.api('/me', function(response) {
+    console.log(JSON.stringify(response));
+});*/
+
+//
+
+FB.logout(function(response) {
+   // Person is now logged out
+});
+
        </script>
 
        <!--
@@ -122,5 +133,6 @@
     <p class="tabs"> <a href = "Create.html" class = "Link"> Create </a> </p>
     <p class="tabs"> <a href = "Profile.html" class = "Link"> Profile </a> </p>
     <p class="tabs"> <a href = "FindFood.html" class = "Link"> Find Food </a> </p>
+    <p class="tabs" onclick = "FB.logout()"> Log Out </p>
   </body>
 </html>
