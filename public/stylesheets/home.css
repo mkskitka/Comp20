@@ -36,3 +36,16 @@ html {
   max-width: 299px;
   max-height: 272px;
 }
+
+#brand-img {
+  max-height: 100%;
+}
+
+#full-brand {
+  display: none;
+}
+
+.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+}
