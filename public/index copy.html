@@ -101,7 +101,6 @@
          // for FB.getLoginStatus().
          if (response.status === 'connected') {
            // Logged into your app and Facebook.
-           testAPI();
          } else if (response.status === 'not_authorized') {
            // The person is logged into Facebook, but not your app.
            document.getElementById('status').innerHTML = 'Please log ' +
@@ -161,22 +160,26 @@
 
        // Here we run a very simple test of the Graph API after login is
        // successful.  See statusChangeCallback() for when this call is made.
-       function testAPI() {
+       /*function testAPI() {
          console.log('Welcome!  Fetching your information.... ');
          FB.api('/me', function(response) {
            console.log('Successful login for: ' + response.name);
            document.getElementById('status').innerHTML =
              'Thanks for logging in, ' + response.name + '!';
          });
-       }
+       }*/
+
+        function fbLogout() {
+            FB.getLoginStatus(function(response) {
+                if (response && response.status === 'connected') {
+                    FB.logout(function(response) {
+                        document.location.reload();
+                    });
+                }
+            });
+        }
 
        </script>
-
-       <!--
-         Below we include the Login Button social plugin. This button uses
-         the JavaScript SDK to present a graphical Login button that triggers
-         the FB.login() function when clicked.
-       -->
 
     <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
     </fb:login-button>
@@ -188,5 +191,6 @@
     <p class="tabs"> <a href = "Create.html" class = "Link"> Create </a> </p>
     <p class="tabs"> <a href = "Profile.html" class = "Link"> Profile </a> </p>
     <p class="tabs"> <a href = "FindFood.html" class = "Link"> Find Food </a> </p>
+    <p class="tabs" onclick = "fbLogout()"> Log Out </p>
   </body>
 </html>
