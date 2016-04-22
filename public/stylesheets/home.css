@@ -41,10 +41,6 @@ html {
   max-height: 100%;
 }
 
-#full-brand {
-  display: none;
-}
-
 .navbar-brand {
   padding-top: 0;
   padding-bottom: 0;
