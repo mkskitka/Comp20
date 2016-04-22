@@ -1,1 +1,25 @@
 #Status Report 3
+
+1. Accomplishments this week:
+-Made a Facebook logout button
+-Researched asynchronous content loading
+-Made an affixed navigation bar for the home page using bootstrap with the page's logo, links to profile, create and find food links, and a search bar
+-Modified create page to better suit database storing of information
+
+
+2. Challenges we faced:
+-Git merging
+-Making Facebook login work on multiple tabs of the web page, and accessing the user's name through Facebook
+
+
+3. Goals for next week:
+-Work on back end: storing recipes and profiles in a database
+-Once recipes are stored:
+  -Implement search algorithm to look for recipes based on a tag
+  -Look into client-side data persistence with local storage for the search bar (keeping track of what the user last searched)
+  -Implement asynchronous content loading on home page feed
+-Once profile data can be stored:
+  -Allow user to upload a profile picture and bio
+  -Link recipes to the user that posted them and display all user's recipes on their profile page
+  -Look into sending a confirmation email to a user when they log in for the first time and create a profile
+-Use bootstrap more for page styling
