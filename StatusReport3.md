@@ -17,9 +17,9 @@
 -Once recipes are stored:
   -Implement search algorithm to look for recipes based on a tag
   -Look into client-side data persistence with local storage for the search bar (keeping track of what the user last searched)
-  -Implement asynchronous content loading on home page feed
+  -Implement asynchronous content loading on home page feed (Mary)
 -Once profile data can be stored:
-  -Allow user to upload a profile picture and bio
-  -Link recipes to the user that posted them and display all user's recipes on their profile page
-  -Look into sending a confirmation email to a user when they log in for the first time and create a profile
--Use bootstrap more for page styling
+  -Allow user to upload a profile picture and bio (Julia)
+  -Link recipes to the user that posted them and display all user's recipes on their profile page (Julia)
+  -Look into sending a confirmation email to a user when they log in for the first time and create a profile (Julia)
+-Use bootstrap more for page styling (Ben and Emily)
