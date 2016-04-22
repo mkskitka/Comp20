@@ -13,9 +13,9 @@
 
 
 3. Goals for next week:
--Work on back end: storing recipes and profiles in a database
--Once recipes are stored:
-  -Implement search algorithm to look for recipes based on a tag
+-Work on back end: storing recipes and profiles in a database (Ben and Mary)
+-Once recipes can be stored:
+  -Implement search algorithm to look for recipes based on a tag (Mary)
   -Look into client-side data persistence with local storage for the search bar (keeping track of what the user last searched)
   -Implement asynchronous content loading on home page feed (Mary)
 -Once profile data can be stored:
@@ -23,3 +23,4 @@
   -Link recipes to the user that posted them and display all user's recipes on their profile page (Julia)
   -Look into sending a confirmation email to a user when they log in for the first time and create a profile (Julia)
 -Use bootstrap more for page styling (Ben and Emily)
+-Figure out how to get Facebook login button and functionality on navigation bar (Emily)
