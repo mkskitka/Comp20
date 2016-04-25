@@ -24,3 +24,7 @@
   -Look into sending a confirmation email to a user when they log in for the first time and create a profile (Julia)
 -Use bootstrap more for page styling (Ben and Emily)
 -Figure out how to get Facebook login button and functionality on navigation bar (Emily)
+
+#Comments by Ming
+* From your status report 2: "Let user post recipes and store these recipes in database" => has this been done?
+* "Link recipes to the user that posted them and display all user's recipes on their profile page " => this is more important than uploading picture and bio.
