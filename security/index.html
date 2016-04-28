@@ -1,0 +1,59 @@
+security.html
+Vulnerabilities Review by Mary Kate Skitka
+
+
+INTRODUCTION: 
+
+I was hired to attempt to find all security vulnerabilities in a web Application consisting of get and post APIs that handle information of a user and their geolocation as well as landmarks around them. The post API is used to store user's logins as well as their latitude and longitude coordinates and returns landmark objects within 1 mile of the user. The get APIs are used to return information about checkins of different users.
+
+METHODOLOGY:
+
+First I used black-box testing, where I tried enter different invalid input that should not be stored. Black-box testing is testing that is done without looking at source code. I ran the program locally on a node server. Curl was used to send data via the post API. Data was used as a tool to test the programs handling of unexpected/invalid data and XSS and injection hacks. Code review was another tool used to look for vulnerabilities in the program.
+
+ABSTRACT AND FINDINGS:
+
+One issue found in the program is the ability for the user to complete XSS or cross site scripting which just means that a user has sent the program or server side, input that when passed to the browser is read as script or javascript which then can change the site in some way. In one instance that I found, an alert message could be sent and stored in the database (in place of a login value) which pops up every time the user goes to the url/checkins.json. Another security issue found is that a user can impersonate another user. Because there is no login or password system, a user can say they are someone else and depending on the further use of this application this could be dangerous and problematic for people using and analyzing this data. Another issue found was bypassing restrictions of input for post API. If you send certain Javascript code as a login value, no name will appear when checkins outputs the users name coordinates. This is bypassing the input restrictions as NO input field is allowed to be undefined, yet we have output that is an empty login string. The output on the page at url/ is  "checked in at"... instead of, "<login> checked in at"... Lastly, content injection is another vulnerability I found in this program. Content injection includes changing the HTML of the web page accessed so that the content is altered. I specifically injected an image in the form of an HTML image tag into the database which eventually was sent as HTML to the browser which displayed the image. This is a vulnerability as bad content can be displayed to the user without the programmers consent. 
+
+ISSUES FOUND:
+
+XSS (cross site scripting): alert box
+
+Location: route: 	url/, url/checkin.json code: lines 24-28
+Severity of Issue:  high any user can input javascript in the login field. 						They can control the message displayed in the alert box, 					 which could be negative for the users to view. Also 						because this alert box would be shown to all users 							that access the home page of the URL, it could 								affect many people at once. 					
+Description of Issue: sending script in the login key value to the database 					via post API. The backend does check that login is 
+					not undefined however it does not have any other restrictions on the input. Therefore script can be sent and when the data is sent to the browser it is interpreted as javascript verses a json string like it is in backend
+Proof of Vulnerability: I sent to the server javascript for an alert box and 					 when I went to the home page, an alert box popped up 						with the message hacked! 
+					Specifically I used the command: curl --data "login:<script>alert("hacked");</script>&lat=41&lng=42" url/sendLocation 
+Resolution:			There are a few things we can do here. One solution is 
+					we can check that no < or > signs are included as no fields will ever need to include these signs. This will prevent the user from being able to send tags for both script and HTML.
+
+Authentication Vulnerability:
+
+Location:  	route: 	all routes, because this affects the validity of the 						data completely it will be dangerous to all pages. code: 					 no implementation 
+Severity of Issue:  high  but it does depend on what the app is used for.
+					If the app is used for clients to see where they are and where landmarks are around them, it is very important that other users do not change information other clients as you will not have a reliable product since authentication is compromised.
+Description of Issue: Users information on their checkins could be 							    compromised since there is no user authentication for 					    this system and users can send information about other 						users.
+Proof of Vulnerability: I can say Ming Chow checked in at Miller Hall at 						6:30 PM on April, 27th 2016.
+Resolution:			We can create a login system where the user has a 							password they use to login into their account and they 						will automatically have the input key value of login as 					their username name.
+
+Bypassing Input Restrictions:
+
+Location: route:    url/, url/checkins.json code: lines 24-28: This is where 					 the programmer checks the validity of the field values 					by restricting them. This is where additional 								restriction is needed to prevent injection of Javascript. 					 This issue was touched upon earlier in the report. 
+Severity of Issue: moderate The change in restriction of input here was that 					 the user can enter an indirectly undefined or front-						end/interface undefined input value for login which is a 					 restriction in the code. The program checks that the 						value is not undefined. This is only a moderate issue as 					 the worse thing I can see happening with this is that 						there is no name inputted for a user and their checkin. 					This could cause issues for the analysis of data.
+Description of Issue: There is a restriction for all input to not be 							undefined, however we can make the login value be 							undefined at least when it is represented on the web 						page/interface, as it shows up as an empty string. We 						can do by sending script as a login value that is a for 
+					loop, this then executes when reaching the browser and no output for the login displays on the page. 
+Proof of Vulnerability: I sent a for loop in the form of a script tag as the 
+					input value of login and when accessing the url/ In this case at localhost:3000/, there was a checkin that read checked in at... instead of <login> checked in at... 
+Resolution:			Again as with the first issue described, if we checked 						that no < or > is in the input than no script could be 						be sent.
+
+Content Injection (HTML): unwanted image
+
+Location: 			route: url/, url/checkins.json code: lines 24-28
+Severity of Issue:	high If we can inject HTML to alter the webpage a user 						can show many users malicious content that was not 							implemented by the programmer, this could have an 							extremely negative impact on the user.
+Description of Issue:We can send HTML in the form of the login key value. 						 It will have no effect until it is sent the browser 						 and implemented as HTML code. Different types of 							 malicious content can be loaded onto the page that is 					  	 not checkins as is expected at url/ and url/checkins.						json.
+Proof of Vulnerability:I sent an HTML image tag in my login key value field 
+					 when sending data to the database via post. The command was, curl --data "login:<html><img scr="img.jpg" height = "50" width = "50"><html>&lat=41&lng=-71" url/sendLocation. An image appear when accessing url/.
+Resolution:			Again a solution that was referred to already, but is 						effective  is to make sure no < or > is in the input 
+
+CONCLUSION:			Although there are some high severity issues in this 						code, they are mostly issues with invalid or unwanted input in the login value of the post request object body. Therefore many of the issues will be easy to fix as they are isolated to lines 24-28. If the programmer simply implements code to check that < and > are not included in input, this eliminates the XSS, content insertion, and Bypassing input restrictions issues talked about above. The authentication issue that any user can input information about other users or non-existent users is a harder issue to fix, but is very important if we wish to make this system reliable in any way. Fixing this issue would involve creating accounts for users so that they're username and password would be fixed an protected from other users. 
+
