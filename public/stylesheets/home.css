@@ -50,6 +50,10 @@ html {
   padding-bottom: 0;
 }
 
+#fb-button{
+  margin-top: 10px;
+}
+
 body{
 padding-top: 70px;
 }
