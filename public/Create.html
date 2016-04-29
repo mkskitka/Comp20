@@ -5,59 +5,14 @@
   <head>
     <title>Create</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src='create.js'></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-     <link href = "stylesheets/home.css" rel = "stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/create.css"/>
   </head>
 
   <body>
-
- <!--this is the navbar-->
-  <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-  <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand">
-        <img id="brand-img" alt="Brand" src="LOGO.png">
-      </a>
-    </div>
-  </div>
-  </nav>
-    </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="Create.html">Create</a></li>
-        <li><a href="Profile.html">Profile</a></li>
-        <li><a href="FindFood.html">Find Food</a></li>
-      </ul>
-      <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a class="tabs" onclick = "fbLogout()">Log Out</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-
-    
     <h1>Create</h1>
     <div class="container">
       <div class="createForm">
@@ -68,20 +23,34 @@
             <input type="text" class="form-control" id="title">
           </div>
 
-          <div class="form-group">
+          <div class="col-md-6">
       		  <input type="file" id="photo" style="display:none" onchange="loadFile(event);"/><br>
             <label for="photo">
               <img src="imageSpot.png" id="output" alt="Your Image"/>
             </label><br>
           </div>
 
-          <div class="form=group">
-            <div id="itemRows">
-              <label>Amount</label> <input type="text" id="amount"name="add_qty" size="4" /> <label>Ingredient</label> <input type="text" name="add_name"/> <input onclick="addRow(this.form);" type="button" class="btn btn-default" value="Add row" />
-            </div>
+          <div class="col-md-6">
+            <label for="difficulty">Difficulty:</label><select class="form-control" id="difficulty">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
           </div>
 
-      		<input type="submit" class="btn btn-default" value="Submit">
+          <div class="form-group">
+              <label for="ingredients">Ingredients:</label> <textarea class="form-control" rows="5" id="ingredients"> </textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="instructions">Instructions:</label> <textarea class="form-control" rows="5" id="instructions"></textarea>
+
+      		<div class="form-group">
+            <br>
+            <input type="submit" class="btn btn-default" value="Submit">
+          </div>
       	</form>
 
       </div>
