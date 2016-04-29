@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link href = "stylesheets/home.css" rel = "stylesheet"/>
     <!--for mobile viewability-->
-    <meta name=viewport content='width=400'>
+    <!--<meta name=viewport content='width=400'>-->
   <head>
   <body>
 
@@ -31,7 +31,6 @@
   </nav>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="index.html">Home</a></li>
         <li><a href="Create.html">Create</a></li>
@@ -47,14 +46,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a class="tabs" onclick = "fbLogout()">Log Out</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right"> 
+      <ul class="nav navbar-nav navbar-right">
           <p> </p>
           <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
           </fb:login-button>
           <div id="status">
           </div>
       </ul>
-    </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
@@ -167,10 +165,6 @@
         }
 
        </script>
-
-    
-
-   
 
     <p class="logo"> <img src = "Feed.Your.Self.2.jpg" alt = "Feed Your Self"> </p>
   </body>
