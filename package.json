@@ -4,11 +4,15 @@
   "description": "A sample Node.js app using Express 4",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+  "start": "node index.js"
   },
   "dependencies": {
-    "ejs": "2.3.3",
-    "express": "4.13.3"
+
+  "ejs": "2.3.3",
+  "express": "4.13.3",
+  "body-parser":"latest",
+  "mongodb": "latest"
+
   },
   "engines": {
     "node": "0.12.7"
