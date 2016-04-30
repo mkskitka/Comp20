@@ -19,7 +19,7 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
      <a class="navbar-brand">
         <img id="brand-img" alt="Brand" src="LOGO.png">
@@ -144,6 +144,10 @@
            console.log('Successful login for: ' + response.name);
            document.getElementById('status').innerHTML =
              'Thanks for logging in, ' + response.name + '!';
+
+            //Added code for profile page to get user's name
+           document.getElementById('name').innerHTML = "user " + response.id +
+            ", " + response.name;
          });
        }
 
@@ -157,7 +161,7 @@
             });
         }
 
-       </script>
+      </script>
 
     <h1>Profile</h1>
     <p> Feed yo self <span id="name"> </span> ! </p>
