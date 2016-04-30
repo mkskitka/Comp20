@@ -10,8 +10,37 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!--code for XML HTTP get request-->
+    <script>
+      function getRecipes() {
+        var request = new XMLHTTPRequest();
+        var url = "https://feed-yo-self.herokuapp.com/getRecipes";
+        request.open("GET", url, true);
+        request.send();
+        var json_data;
+        request.onreadystatechange = function() {
+            if (request.readyState == 4 && request.status == 200) {
+              result = " ";
+              rawdata = request.responseText;
+              json_data = JSON.parse(rawdata);
+              console.log(json_data);
+              displayRecipes(json_data);
+            }
+        }
+      }
+      function displayRecipes(json_data) {
+        var elem = document.getDocumentById("recipes");
+        var toDisplay = " ";
+        for (i = 0; i < json_data.recipes.length; i++) {
+          toDisplay += json_data.recipes[i].name + ", ";
+        }
+        elem.innerHTML = toDisplay;
+      }
+    </script>
+
   </head>
-  <body>
+  <body onload="getRecipes()">
 
 <!--navbar-->
 <nav class="navbar navbar navbar-default navbar-fixed-top">
@@ -20,7 +49,7 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
      <a class="navbar-brand">
         <img id="brand-img" alt="Brand" src="LOGO.png">
@@ -160,5 +189,6 @@
        </script>
 
     <p class="logo"> <img src = "Feed.Your.Self.2.jpg" alt = "Feed Your Self"> </p>
+    <div class="recipes"></div>
   </body>
 </html>
