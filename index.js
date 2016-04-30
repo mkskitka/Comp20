@@ -8,7 +8,8 @@ app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
 
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb'}));
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
@@ -49,16 +50,15 @@ app.post('/sendRecipe', function(request, response) {
     "instructions": instructions,
     "created_at": created_at
   };
-  response.send('here');
-  //   mongodb.MongoClient.connect(uri, function(err, db) {
-  //   db.collection('recipes', function(error, coll) {
-  //     var id = coll.insert(toInsert, function(error, saved) {
-  //       if (error) {
-  //         response.send('Error');
-  //       } else {
-  //         response.send('posted');
-  //       }
-  //     });
-  //   });
-  // });
+    mongodb.MongoClient.connect(uri, function(err, db) {
+    db.collection('recipes', function(error, coll) {
+      var id = coll.insert(toInsert, function(error, saved) {
+        if (error) {
+          response.send('Error');
+        } else {
+          response.send('hi');
+        }
+      });
+    });
+  });
 });
