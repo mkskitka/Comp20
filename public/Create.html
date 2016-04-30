@@ -59,23 +59,23 @@
     <div class="container">
       <div class="createForm">
 
-     		<form action="http://requestb.in/14xn9je1" method="POST" role="form">
+     		<form action="http://localhost:5000/sendRecipe" method="POST" role="form">
           
           <div class="col-md-5">
       		  <input type="file" name="photo" id="photo" style="display:none" onchange="loadFile(event);"/><br>
             <label for="photo">
               <img src="imageSpot.png" id="output" alt="Your Image"/>
             </label><br>
-            <input type="hidden" name="64bitImage" id="64bitImage" value=''/>
+            <input type="hidden" name="bitImage" id="64bitImage" value=''/>
           </div>
 
           <div class="col-md-7">
-            <label for="title">Title:</label>
-            <input type="text" class="form-control" id="title" name="title">
+            <label for="recipe">Title:</label>
+            <input type="text" class="form-control" id="recipe" name="recipe">
           </div>
 
           <div class="col-md-3">
-            <label for="hours">Cook Time (minutes):</label><input type="text" class="form-control" id="hours" name="cookTime">
+            <label for="cookTime">Cook Time (minutes):</label><input type="text" class="form-control" id="cookTime" name="cookTime">
           </div>
 
           <div class="col-md-4">
@@ -116,7 +116,7 @@
             Fry on pan with oil for 20 minutes"></textarea>
           </div>
 
-      		<div class="form-group">
+      		<div class="col-md-12">
             <br>
             <input type="submit" class="btn btn-default" name="submit" value="Submit">
           </div>
