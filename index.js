@@ -54,9 +54,12 @@ app.post('/sendRecipe', function(request, response) {
     db.collection('recipes', function(error, coll) {
       var id = coll.insert(toInsert, function(error, saved) {
         if (error) {
-          response.send('Error');
+          response.sendStatus(500);
         } else {
-          response.send('hi');
+          response.writeHead(301,
+            {Location: '/index.html'}
+          );
+          response.end();;
         }
       });
     });
