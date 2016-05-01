@@ -2,7 +2,16 @@ var express = require('express');
 var app = express();
 var mongodb = require('mongodb');
 var bodyParser = require('body-parser');
-var uri = 'mongodb://heroku_hrlt9p2b:ciu3131gcbehkjlr1cuiatdd1d@ds023550.mlab.com:23550/heroku_hrlt9p2b';
+//var uri = 'mongodb://heroku_hrlt9p2b:ciu3131gcbehkjlr1cuiatdd1d@ds023550.mlab.com:23550/heroku_hrlt9p2b';
+
+var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL ||  'mongodb://heroku_hrlt9p2b:ciu3131gcbehkjlr1cuiatdd1d@ds023550.mlab.com:23550/heroku_hrlt9p2b';
+var MongoClient = require('mongodb').MongoClient, format = require('util').format;
+var db = MongoClient.connect(mongoUri, function(error, databaseConnection) {
+	if(error) {
+		console.log(error);
+	}
+	db = databaseConnection;
+});
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -70,13 +79,13 @@ app.get('/getRecipes', function(request, response){//for home page
   response.header("Access-Control-Allow-Origin", "*");
   response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-  response.set('Content-Type', 'application/json');
+  //response.set('Content-Type', 'application/json');
   //var data = new Array();
   var error_msg = '{"error":"something went wrong!"}';
 
   db.collection('recipes', function(error, coll){
     if(!error){
-      coll.find({created_at: -1}).toArray(function(err, cursor){
+      coll.find().sort({created_at: -1}).toArray(function(err, cursor){
         if(!err){
           /*for (var count = 0; count < cursor.length; count++) {
               data[data.length] = cursor[count];
