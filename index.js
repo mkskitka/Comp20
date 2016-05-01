@@ -22,7 +22,6 @@ app.get('/', function(request, response) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
-
 app.post('/sendRecipe', function(request, response) {
   response.header("Access-Control-Allow-Origin", "*");
   response.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -65,6 +64,7 @@ app.post('/sendRecipe', function(request, response) {
     });
   });
 });
+
 app.get('/getRecipes', function(request, response){//for home page
   response.set('Content-Type', 'application/json');
   var data = new Array();
@@ -75,15 +75,15 @@ app.get('/getRecipes', function(request, response){//for home page
           for (var count = 0; count < cursor.length; count++) {
               data[data.length] = cursor[count];
             }
-          }
           response.send(data);
         }
         else{
           response.sendStatus(500);
         }
       });
-    });
+    }
   });
+});
 app.post('/getTags', function(request, response){//on home page with limited search feature
       var tag = request.body.tag;
       var data = new Array();
@@ -101,7 +101,7 @@ app.post('/getTags', function(request, response){//on home page with limited sea
             else{
               response.sendStatus(500);
             }
-          }
+          });
         }
       });
   });
