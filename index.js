@@ -35,6 +35,7 @@ app.post('/sendRecipe', function(request, response) {
   response.header("Access-Control-Allow-Origin", "*");
   response.header("Access-Control-Allow-Headers", "X-Requested-With");
   var title = request.body.recipe;
+	var username = request.body.username;
   var imgName = request.body.photo;
   var image = request.body.bitImage;
   var cookTime = request.body.cookTime;
@@ -47,6 +48,7 @@ app.post('/sendRecipe', function(request, response) {
   var created_at = new Date();
   var toInsert = {
     "title": title,
+		"username": username,
     "imgName": imgName,
     "image": image,
     "cookTime": cookTime,
