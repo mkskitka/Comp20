@@ -66,6 +66,10 @@ app.post('/sendRecipe', function(request, response) {
 });
 
 app.get('/getRecipes', function(request, response){//for home page
+  //to test on local host
+  response.header("Access-Control-Allow-Origin", "*");
+  response.header("Access-Control-Allow-Headers", "X-Requested-With");
+
   response.set('Content-Type', 'application/json');
   var data = new Array();
   db.collection('recipes', function(error, coll){

@@ -14,7 +14,7 @@
     <!--code for XML HTTP get request-->
     <script>
       function getRecipes() {
-        var request = new XMLHTTPRequest();
+        var request = new XMLHttpRequest();
         var url = "https://feed-yo-self.herokuapp.com/getRecipes";
         request.open("GET", url, true);
         request.send();
@@ -32,8 +32,8 @@
       function displayRecipes(json_data) {
         var elem = document.getDocumentById("recipes");
         var toDisplay = " ";
-        for (i = 0; i < json_data.recipes.length; i++) {
-          toDisplay += json_data.recipes[i].name + ", ";
+        for (i = 0; i < json_data.length; i++) {
+          toDisplay += json_data[i] + ", ";
         }
         elem.innerHTML = toDisplay;
       }
