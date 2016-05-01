@@ -71,23 +71,30 @@ app.get('/getRecipes', function(request, response){//for home page
   response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
   response.set('Content-Type', 'application/json');
-  var data = new Array();
+  //var data = new Array();
+  var error_msg = '{"error":"something went wrong!"}';
+
   db.collection('recipes', function(error, coll){
     if(!error){
       coll.find({created_at: -1}).toArray(function(err, cursor){
-        if(cursor){
-          for (var count = 0; count < cursor.length; count++) {
+        if(!err){
+          /*for (var count = 0; count < cursor.length; count++) {
               data[data.length] = cursor[count];
-            }
-          response.send(data);
+          }
+          response.send(data);*/
+          response.send(cursor);
         }
         else{
-          response.sendStatus(500);
+          response.send(error_msg);
         }
       });
     }
+    else {
+      response.send(error_msg);
+    }
   });
 });
+
 app.post('/getTags', function(request, response){//on home page with limited search feature
       var tag = request.body.tag;
       var data = new Array();
