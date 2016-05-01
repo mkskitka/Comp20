@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var mongodb = require('mongodb');
 var bodyParser = require('body-parser');
-//var uri = 'mongodb://heroku_hrlt9p2b:ciu3131gcbehkjlr1cuiatdd1d@ds023550.mlab.com:23550/heroku_hrlt9p2b';
+var uri = 'mongodb://heroku_hrlt9p2b:ciu3131gcbehkjlr1cuiatdd1d@ds023550.mlab.com:23550/heroku_hrlt9p2b';
 
 var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL ||  'mongodb://heroku_hrlt9p2b:ciu3131gcbehkjlr1cuiatdd1d@ds023550.mlab.com:23550/heroku_hrlt9p2b';
 var MongoClient = require('mongodb').MongoClient, format = require('util').format;
