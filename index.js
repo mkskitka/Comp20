@@ -70,7 +70,7 @@ app.get('/getRecipes', function(request, response){//for home page
   var data = new Array();
   db.collection('recipes', function(error, coll){
     if(!error){
-      coll.find().({created_at: -1}).toArray(function(err, cursor){
+      coll.find({created_at: -1}).toArray(function(err, cursor){
         if(cursor){
           for (var count = 0; count < cursor.length; count++) {
               data[data.length] = cursor[count];
@@ -89,7 +89,7 @@ app.post('/getTags', function(request, response){//on home page with limited sea
       var data = new Array();
       db.collection('users', function(error, coll){
         if(!error){
-          coll.find().({created_at: -1}).toArray(function(err, cursor){
+          coll.find({created_at: -1}).toArray(function(err, cursor){
             if(cursor){
               for (var count = 0; count < cursor.length; count++) {//inorder
                   if(cursor[count].tag1 == tag || cursor[count].tag2 == tag || cursor[count].tag3 == tag){
