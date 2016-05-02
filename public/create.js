@@ -107,10 +107,7 @@ var loadFile = function(event) {
        document.getElementById('status').innerHTML =
          'Thanks for logging in, ' + response.name + '!';
       //code to get fb user name for create post
-      document.getElementById('fbusername').value = response.name;
-      console.log(response.name);
-      var elem = document.getElementById('fbusername').value;
-      console.log(elem);
+      document.getElementById('fbusername').value = response.id;
      });
    }
 

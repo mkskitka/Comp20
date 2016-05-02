@@ -30,7 +30,7 @@
         }
       }
       function displayRecipes(json_data) {
-        var elem = document.getElementById("recipes");
+        var elem = document.getElementById("all_recipes");
         var toDisplay = " ";
         for (i = 0; i < json_data.length; i++) {
           toDisplay += "<p> Recipe id: " + json_data[i]._id + ", username: " +
@@ -193,6 +193,6 @@
        </script>
 
     <p class="logo"> <img src = "Feed.Your.Self.2.jpg" alt = "Feed Your Self"> </p>
-    <div id="recipes"></div>
+    <div id="all_recipes"></div>
   </body>
 </html>

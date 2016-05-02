@@ -6,9 +6,46 @@
     <title>Profile</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"> </script>
    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  <script>
+  function getMyRecipes() {
+    var request = new XMLHttpRequest();
+    var url = "https://feed-yo-self.herokuapp.com/getMyRecipes";
+    var params = "username=" + document.getElementById('name').innerHTML;
+    request.open("POST", url, true);
+    request.setRequestHeader("Content-type",
+              "application/x-www-form-urlencoded");
+    var json_data;
+    request.onreadystatechange = function() {
+        if (request.readyState == 4 && request.status == 200) {
+          result = " ";
+          rawdata = request.responseText;
+          json_data = JSON.parse(rawdata);
+          console.log(json_data);
+          displayRecipes(json_data);
+        }
+    }
+    request.send(params);
+  }
+  function displayRecipes(json_data) {
+    var elem = document.getElementById("my_recipes");
+    var toDisplay = " ";
+    for (i = 0; i < json_data.length; i++) {
+      toDisplay += "<p> Recipe id: " + json_data[i]._id + ", username: " +
+      json_data[i].username + ", cook time: " +
+       json_data[i].cookTime + ", difficulty: " + json_data[i].difficulty +
+       ", ingredients: " + json_data[i].ingredients + ", instructions: " +
+       json_data[i].instructions + "</p>";
+    }
+    elem.innerHTML = toDisplay;
+  }
+
+  </script>
+
+
   </head>
   <body>
 
@@ -146,8 +183,7 @@
              'Thanks for logging in, ' + response.name + '!';
 
             //Added code for profile page to get user's name
-           document.getElementById('name').innerHTML = "user " + response.id +
-            ", " + response.name + " " + response.email;
+           document.getElementById('name').innerHTML = response.id;
          });
        }
 
@@ -165,5 +201,7 @@
 
     <h1>Profile</h1>
     <p> Feed yo self <span id="name"> </span> ! </p>
+    <div id="my_recipes"></div>
+    <script> getMyRecipes() </script>
   </body>
 </html>
