@@ -11,10 +11,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
   <script>
-  function getMyRecipes() {
+  function getMyRecipes(usr_id) {
     var request = new XMLHttpRequest();
     var url = "https://feed-yo-self.herokuapp.com/getMyRecipes";
-    var params = "username=" + document.getElementById('name').innerHTML;
+    var params = "username=" + usr_id;
     request.open("POST", url, true);
     request.setRequestHeader("Content-type",
               "application/x-www-form-urlencoded");
@@ -34,7 +34,8 @@
     var elem = document.getElementById("my_recipes");
     var toDisplay = " ";
     for (i = 0; i < json_data.length; i++) {
-      toDisplay += "<p> Recipe id: " + json_data[i]._id + ", username: " +
+      toDisplay += "<p> Recipe title: " + json_data[i].title +
+      ", recipe id: " + json_data[i]._id + ", username: " +
       json_data[i].username + ", cook time: " +
        json_data[i].cookTime + ", difficulty: " + json_data[i].difficulty +
        ", ingredients: " + json_data[i].ingredients + ", instructions: " +
@@ -183,7 +184,8 @@
              'Thanks for logging in, ' + response.name + '!';
 
             //Added code for profile page to get user's name
-           document.getElementById('name').innerHTML = response.id;
+           document.getElementById('name').innerHTML = response.name;
+           getMyRecipes(response.id);
          });
        }
 
@@ -202,6 +204,5 @@
     <h1>Profile</h1>
     <p> Feed yo self <span id="name"> </span> ! </p>
     <div id="my_recipes"></div>
-    <script> getMyRecipes() </script>
   </body>
 </html>
