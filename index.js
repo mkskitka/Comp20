@@ -139,7 +139,7 @@ app.post('/getTags', function(request, response){//on home page with limited sea
 
 		  db.collection('recipes', function(error, coll){
 		    if(!error){
-		      coll.find({$or [{tag1: tag}, {tag2: tag}, {tag3: tag}] }).sort({created_at: -1}).toArray(function(err, cursor){
+		      coll.find( { $or: [{tag1: tag}, {tag2: tag}, {tag3: tag}] } ).sort({created_at: -1}).toArray(function(err, cursor){
 		        if(!err){
 		          response.send(cursor);
 		        }
