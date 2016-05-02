@@ -131,23 +131,25 @@ app.post('/getMyRecipes', function(request, response){//for home page
 });
 
 app.post('/getTags', function(request, response){//on home page with limited search feature
-      var tag = request.body.tag;
-      var data = new Array();
-      db.collection('users', function(error, coll){
-        if(!error){
-          coll.find({created_at: -1}).toArray(function(err, cursor){
-            if(cursor){
-              for (var count = 0; count < cursor.length; count++) {//inorder
-                  if(cursor[count].tag1 == tag || cursor[count].tag2 == tag || cursor[count].tag3 == tag){
-                      data[data.length] = cursor[count];
-                  }
-               }
-               send(data);
-            }
-            else{
-              response.sendStatus(500);
-            }
-          });
-        }
-      });
+			response.header("Access-Control-Allow-Origin", "*");
+		  response.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+			var tag = request.body.tag;
+		  var error_msg = '{"error":"something went wrong!"}';
+
+		  db.collection('recipes', function(error, coll){
+		    if(!error){
+		      coll.find({$or [{tag1: tag}, {tag2: tag}, {tag3: tag}] }).sort({created_at: -1}).toArray(function(err, cursor){
+		        if(!err){
+		          response.send(cursor);
+		        }
+		        else{
+		          response.send(error_msg);
+		        }
+		      });
+		    }
+		    else {
+		      response.send(error_msg);
+		    }
+		  });
   });

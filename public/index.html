@@ -32,15 +32,37 @@
       function displayRecipes(json_data) {
         var elem = document.getElementById("all_recipes");
         var toDisplay = " ";
+        var image;
         for (i = 0; i < json_data.length; i++) {
-          toDisplay += "<p> Recipe title: " + json_data[i].title +
-          ", recipe id: " + json_data[i]._id + ", username: " +
+          image = json_data[i].image;
+          toDisplay += "<p> Recipe title: " + json_data[i].title;
+          if (image != "") {
+            toDisplay += "<img height='50%' width='50%' src=" + image + " alt='recipe'>";
+          }
+          toDisplay += ", recipe id: " + json_data[i]._id + ", username: " +
           json_data[i].username + ", cook time: " +
            json_data[i].cookTime + ", difficulty: " + json_data[i].difficulty +
            ", ingredients: " + json_data[i].ingredients + ", instructions: " +
            json_data[i].instructions + "</p>";
         }
         elem.innerHTML = toDisplay;
+      }
+
+      function getTags() {
+        var request = new XMLHttpRequest();
+        var url = "https://feed-yo-self.herokuapp.com/getTags";
+        request.open("GET", url, true);
+        request.send();
+        var json_data;
+        request.onreadystatechange = function() {
+            if (request.readyState == 4 && request.status == 200) {
+              result = " ";
+              rawdata = request.responseText;
+              json_data = JSON.parse(rawdata);
+              console.log(json_data);
+              displayRecipes(json_data);
+            }
+        }
       }
     </script>
 
@@ -77,7 +99,7 @@
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default" onclick=getTags()>Submit</button>
       </form>
       </ul>
     </div>
