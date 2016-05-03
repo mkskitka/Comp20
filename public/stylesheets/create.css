@@ -4,6 +4,21 @@
   max-height: 272px;
 }
 
+#photoArea {
+	min-width: 299px;
+	min-height: 272px;
+}
+
 h1 {
 	text-align: center;
+}
+
+input:invalid {
+    border: 2px solid red;
+    border-radius: 4px;
+}
+
+textarea:invalid {
+	border: 2px solid red;
+    border-radius: 4px;
 }
