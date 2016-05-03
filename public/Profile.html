@@ -210,21 +210,20 @@
               var month_name = getMonthName(month);
               //for first visit to profile
               if (localStorage.log == undefined) {
-                output = "Welcome, ";
+                output = "Welcome, " + response.name + "!";
               }
               //for later visits to profile
               else {
                 var last_login = localStorage.log;
-                output = "You last visited your profile on " + last_login + ", ";
+                output = "You last visited your profile on " + last_login;
               }
               localStorage.log = month_name + " " + day;
             }
        			else {
-       				output = "Thanks for loggin in, ";
+       				output = "Thanks for logging in, " + response.name + "!";
        			}
        		});
-           document.getElementById('status').innerHTML =
-             output + response.name + '!';
+           document.getElementById('status').innerHTML = output;
 
             //Added code for profile page to get user's name
            document.getElementById('name').innerHTML = ", " + response.name;
