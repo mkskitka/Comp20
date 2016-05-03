@@ -1,7 +1,7 @@
 # comp20-s2016-team20
 
 ##Project Title: "Feed Yo Self"
-Proposal Draft 2
+Proposal (Draft 2)
 
 ##Problem Statement:
 Novice cookers need some assisting building blocks to learn
@@ -26,9 +26,9 @@ how to make meals and experiment with forming their own recipes that align with 
 
   -Front-end framework (Bootstrap): For general layout of recipes on website
 
-  -Push notifications: Users will receive notifications when their recipes are rated
+  -Client-side data persistence: Local storage will keep track of when the user last visited their profile page and this date will be displayed near the Facebook login button
 
-  -Server-side data persistence: all recipes and associated information uploaded will be stored in a database
+  -Server-side data persistence: All recipes and associated information uploaded will be stored in a database
 
 ##Data to be Used and Collected:
 -Users will upload recipes which will be stored in a database
@@ -42,7 +42,7 @@ how to make meals and experiment with forming their own recipes that align with 
   -Facebook Developers login feature
 
 ##Database We Will Use:
-  -Mongodb
+  -MongoDB
 
 ##Electronic Mockups:
 
