@@ -77,22 +77,15 @@ app.post('/sendRecipe', function(request, response) {
 });
 
 app.get('/getRecipes', function(request, response){//for home page
-  //to test on local host
   response.header("Access-Control-Allow-Origin", "*");
   response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-  //response.set('Content-Type', 'application/json');
-  //var data = new Array();
   var error_msg = '{"error":"something went wrong!"}';
 
   db.collection('recipes', function(error, coll){
     if(!error){
       coll.find().sort({created_at: -1}).toArray(function(err, cursor){
         if(!err){
-          /*for (var count = 0; count < cursor.length; count++) {
-              data[data.length] = cursor[count];
-          }
-          response.send(data);*/
           response.send(cursor);
         }
         else{
@@ -107,6 +100,7 @@ app.get('/getRecipes', function(request, response){//for home page
 });
 
 app.post('/getMyRecipes', function(request, response){//for home page
+	//to test on local host
   response.header("Access-Control-Allow-Origin", "*");
   response.header("Access-Control-Allow-Headers", "X-Requested-With");
 

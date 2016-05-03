@@ -189,7 +189,7 @@
              'Thanks for logging in, ' + response.name + '!';
 
             //Added code for profile page to get user's name
-           document.getElementById('name').innerHTML = response.name;
+           document.getElementById('name').innerHTML = ", " + response.name;
            getMyRecipes(response.id);
          });
        }
@@ -206,8 +206,8 @@
 
       </script>
 
-    <h1>Profile</h1>
-    <p> Feed yo self <span id="name"> </span> ! </p>
+    <!--<h1>My Profile</h1>-->
+    <p class="profile_font"> Feed yo self<span id="name"> </span> ! </p>
     <div id="my_recipes"></div>
   </body>
 </html>

@@ -53,3 +53,9 @@ html {
 body{
 padding-top: 70px;
 }
+
+.profile_font {
+  text-align: center;
+  font-family: fantasy;
+  font-size: 40px;
+}
