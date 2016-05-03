@@ -201,26 +201,23 @@
        function testAPI() {
          //console.log('Welcome!  Fetching your information.... ');
          FB.api('/me', {fields: 'name,id,email'}, function(response) {
-           var curr_time;
-           var last_login;
            var output;
            $(document).ready(function() {
        			if(typeof(Storage) !== "undefined") {
-       				curr_time = new Date();
+       				var curr_time = new Date();
+              var day = curr_time.getDate();
+              var month = curr_time.getMonth();
+              var month_name = getMonthName(month);
               //for first visit to profile
               if (localStorage.log == undefined) {
                 output = "Welcome, ";
               }
               //for later visits to profile
               else {
-                var new_date = localStorage.log;
-                var day = new_date.getUTCDate();
-                var month = new_date.getUTCMonth();
-                var month_name = getMonthName(month);
-                last_login = month_name + " " + day;
+                var last_login = localStorage.log;
                 output = "You last visited your profile on " + last_login + ", ";
               }
-              localStorage.log = curr_time;
+              localStorage.log = month_name + " " + day;
             }
        			else {
        				output = "Thanks for loggin in, ";
