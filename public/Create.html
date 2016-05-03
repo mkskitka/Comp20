@@ -58,32 +58,33 @@
 
 
     <h1>Create</h1>
-    <div class="container">
+    <div class="container">      
       <div class="createForm">
+        <div class="col-md-12" id="errors"></div>
 
-     		<form action="/sendRecipe" method="POST" role="form">
+     		<form action="/sendRecipe" method="POST" role="form" name="createForm">
 
-          <div class="col-md-5">
-      		  <input type="file" name="photo" id="photo" style="display:none" onchange="loadFile(event);"/><br>
+          <div class="col-md-5" id="photoArea">
+      		  <input type="file" name="photo" id="photo" style="display:none" onchange="loadFile(event);" accept="image/*"/><br>
             <label for="photo">
-              <img src="imageSpot.png" id="output" alt="Your Image" required/>
+              <img src="imageSpot.png" id="output" alt="Your Image"/>
             </label><br>
             <input type="hidden" name="bitImage" id="64bitImage" value=''/>
           </div>
 
           <div class="col-md-7">
             <label for="recipe">Title:</label>
-            <input type="text" class="form-control" id="recipe" name="recipe" required>
+            <input type="text" class="form-control" id="recipe" name="recipe">
             <!--adding field to get facebook username id-->
             <input type="hidden" name="username" id="fbusername" value=" "/>
           </div>
 
           <div class="col-md-3">
-            <label for="cookTime">Cook Time (minutes):</label><input type="text" class="form-control" id="cookTime" name="cookTime" required>
+            <label for="cookTime">Cook Time (minutes):</label><input type="number" class="form-control" id="cookTime" name="cookTime" min="1">
           </div>
 
           <div class="col-md-4">
-            <label for="difficulty">Difficulty:</label><select class="form-control" id="difficulty" name="difficulty" required>
+            <label for="difficulty">Difficulty:</label><select class="form-control" id="difficulty" name="difficulty">
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -110,19 +111,19 @@
           <div class="col-md-7">
               <label for="ingredients">Ingredients:</label> <textarea class="form-control" rows="6" name="ingredients" id="ingredients" placeholder="eg.
               2 Tomatoes
-              1 Onion")required></textarea>
+              1 Onion")></textarea>
           </div>
 
           <div class="col-md-12">
             <label for="instructions">Instructions:</label> <textarea class="form-control" rows="5" id="instructions" name="instructions" placeholder="eg.
             Chop up the tomatoes
             Dice the onions
-            Fry on pan with oil for 20 minutes" required></textarea>
+            Fry on pan with oil for 20 minutes"></textarea>
           </div>
 
       		<div class="col-md-12">
             <br>
-            <input type="submit" class="btn btn-default" name="submit" value="Submit">
+            <input type="submit" class="btn btn-default" name="submit" value="Submit" onclick="return refreshInvalid()">
           </div>
       	</form>
 
