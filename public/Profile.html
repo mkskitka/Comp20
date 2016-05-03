@@ -179,6 +179,23 @@
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
 
+       function getMonthName(num) {
+         var months = new Array();
+         months[0] = "January";
+         months[1] = "February";
+         months[2] = "March";
+         months[3] = "April";
+         months[4] = "May";
+         months[5] = "June";
+         months[6] = "July";
+         months[7] = "August";
+         months[8] = "September";
+         months[9] = "October";
+         months[10] = "November";
+         months[11] = "December";
+         return months[num];
+       }
+
        // Here we run a very simple test of the Graph API after login is
        // successful.  See statusChangeCallback() for when this call is made.
        function testAPI() {
@@ -190,12 +207,17 @@
            $(document).ready(function() {
        			if(typeof(Storage) !== "undefined") {
        				curr_time = new Date();
+              //for first visit to profile
               if (localStorage.log == undefined) {
                 output = "Welcome, ";
               }
+              //for later visits to profile
               else {
-                last_login = localStorage.log;
-                output = "You last logged in at " + last_login + ", ";
+                var day = localStorage.log.getUTCDate();
+                var month = localStorage.log.getUTCMonth();
+                var month_name = getMonthName(month);
+                last_login = month_name + " " + day;
+                output = "You last visited your profile on " + last_login + ", ";
               }
               localStorage.log = curr_time;
             }
@@ -203,7 +225,6 @@
        				output = "Thanks for loggin in, ";
        			}
        		});
-           //console.log('Successful login for: ' + response.name);
            document.getElementById('status').innerHTML =
              output + response.name + '!';
 
