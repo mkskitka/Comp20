@@ -1,7 +1,5 @@
-# comp20-s2016-team20
-
-##Project Title: "Feed Yo Self"
-Proposal (Draft 2)
+###Project Title: "Feed Yo Self"
+##Project Proposal, Draft 2
 
 ##Problem Statement:
 Novice cookers need some assisting building blocks to learn
