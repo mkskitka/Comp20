@@ -11,7 +11,8 @@
   "ejs": "2.3.3",
   "express": "4.13.3",
   "body-parser":"latest",
-  "mongodb": "latest"
+  "mongodb": "latest",
+  "gridster": "latest"
 
   },
   "engines": {

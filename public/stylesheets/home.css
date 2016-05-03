@@ -52,6 +52,11 @@ html {
 
 body{
 padding-top: 70px;
+background-color: #E1CAFF;
+font-family: 'Helvetica Neue', Arial, sans-serif;
+-webkit-font-smoothing: antialiased;
+font-size: x-small;
+color: #666666;
 }
 
 .profile_font {
@@ -59,3 +64,39 @@ padding-top: 70px;
   font-family: fantasy;
   font-size: 40px;
 }
+
+ul, ol {
+    list-style: none;
+}
+
+/* Gridster styles */
+.demo {
+    margin: 3em 0;
+    padding: 7.5em 0 5.5em;
+    background: #004756;
+}
+
+.demo:hover .gridster {
+    opacity: 1;
+}
+
+.gridster {
+    width: 940px;
+    margin: 0 auto;
+
+    opacity: .8;
+
+    -webkit-transition: opacity .6s;
+    -moz-transition: opacity .6s;
+    -o-transition: opacity .6s;
+    -ms-transition: opacity .6s;
+    transition: opacity .6s;
+}
+
+.gridster .gs_w {
+    background: #FFF;
+    cursor: pointer;
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
