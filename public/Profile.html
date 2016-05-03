@@ -213,8 +213,9 @@
               }
               //for later visits to profile
               else {
-                var day = localStorage.log.getUTCDate();
-                var month = localStorage.log.getUTCMonth();
+                var new_date = localStorage.log;
+                var day = new_date.getUTCDate();
+                var month = new_date.getUTCMonth();
                 var month_name = getMonthName(month);
                 last_login = month_name + " " + day;
                 output = "You last visited your profile on " + last_login + ", ";
