@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href = "stylesheets/home.css" rel = "stylesheet"/>
 
   <script>
   function getMyRecipes(usr_id) {
@@ -31,22 +32,22 @@
     request.send(params);
   }
   function displayRecipes(json_data) {
-    var elem = document.getElementById("my_recipes");
-    var toDisplay = " ";
-    var image;
-    for (i = 0; i < json_data.length; i++) {
-      image = json_data[i].image;
-      toDisplay += "<p> Recipe title: " + json_data[i].title;
-      if (image != "") {
-        toDisplay += "<img height='50%' width='50%' src=" + image + " alt='recipe'>";
-      }
-      toDisplay += ", recipe id: " + json_data[i]._id + ", username: " +
-      json_data[i].username + ", cook time: " +
-       json_data[i].cookTime + ", difficulty: " + json_data[i].difficulty +
-       ", ingredients: " + json_data[i].ingredients + ", instructions: " +
-       json_data[i].instructions + "</p>";
+    document.getElementById('info').innerHTML = " ";
+    for(i=0; i<20 && i < json_data.length; i++){
+      var image = json_data[i].image;
+      var title = json_data[i].title;
+      var cookTime = json_data[i].cookTime;
+      var difficulty = json_data[i].difficulty;
+      var tag1 = json_data[i].tag1;
+      var tag2 = json_data[i].tag2;
+      var tag3 = json_data[i].tag3;
+      var ingredients = json_data[i].ingredients;
+      var instructions = json_data[i].instructions;
+
+      var all_data = "Title: " + title + ", Cook Time: " + cookTime + ", Difficulty: " + difficulty +
+      ", Tags: " + tag1 + ", " + tag2 + ", " + tag3 + ", Ingredients: " + ingredients + ", Instructions: " + instructions;
+      document.getElementById('info').innerHTML += "<img class='stuff' style='PADDING-LEFT: 10px' style='PADDING-RIGHT: 10px' height='400' width='400'src=" + image + ">";
     }
-    elem.innerHTML = toDisplay;
   }
 
   </script>
@@ -239,6 +240,6 @@
 
     <!--<h1>My Profile</h1>-->
     <p class="profile_font"> Feed yo self<span id="name"> </span> ! </p>
-    <div id="my_recipes"></div>
+    <div id="info"></div>
   </body>
 </html>
