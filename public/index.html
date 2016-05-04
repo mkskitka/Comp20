@@ -9,17 +9,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link href = "stylesheets/home.css" rel = "stylesheet"/>
-
-    <link rel="stylesheet" type="text/css" href="../node_modules/gridster/dist/jquery.gridster.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script src="../node_modules/gridster/dist/jquery.gridster.js" type="text/javascript" charset="utf-8"></script>
 
     <style>
-      .info{
-        width:30%;
-        display:inline;
-      }
+      #info{
+         text-align: center;
+        }
     </style>
+
+
+<script>
+$(document).ready(function(){
+    $(".stuff").click(function(){
+       $(".details").slideToggle();
+    });
+});
+</script>
 
     <!--code for XML HTTP get request-->
     <script>
@@ -38,11 +43,13 @@
             }
         }
       }
+
       function displayRecipes(json_data) {
-        for(i=1; i<json_data.length; i++){
+        for(i=0; i<20; i++){
           image = json_data[i].image;
           //console.log(image);
-          document.getElementById('img'+i).src = image;
+          //document.getElementById('img'+ (i+1)).src = image;
+          document.getElementById('info').innerHTML += "<img class='stuff' style='PADDING-LEFT: 10px' style='PADDING-RIGHT: 10px' height='400' width='400'src=" + image + ">";
         }
         /*var elem = document.getElementById("all_recipes");
         var toDisplay = " ";
@@ -236,47 +243,48 @@
 
     <p class="logo"> <img src = "Feed.Your.Self.2.jpg" alt = "Feed Your Self"> </p>
     
-  <div class="info">
-    <img id="img1" height='300' width='300'src=''>
+  <div id="info">
+   <!-- <img class="stuff" id="img1" height='300' width='300'src=''>
     </img>
-    <img id="img2" height='300' width='300'src=''>
+    <div class="details">ben is a person</div>
+    <img class="stuff" id="img2" height='300' width='300'src=''>
     </img>
-    <img id="img3" height='300' width='300'src=''>
+    <img class="stuff" id="img3" height='300' width='300'src=''>
     </img>
-    <img id="img4" height='300' width='300'src=''>
+    <img class="stuff" id="img4" height='300' width='300'src=''>
     </img>
-    <img id="img5" height='300' width='300'src=''>
+    <img class="stuff" id="img5" height='300' width='300'src=''>
     </img>
-    <img id="img6" height='300' width='300'src=''>
+    <img class="stuff" id="img6" height='300' width='300'src=''>
     </img>
-   <!-- <img id="img7" height='300' width='300'src=''>
+    <img class="stuff" id="img7" height='300' width='300'src=''>
     </img>
-    <img id="img8" height='300' width='300'src=''>
+    <img class="stuff" id="img8" height='300' width='300'src=''>
     </img>
-    <img id="img9" height='300' width='300'src=''>
+    <img class="stuff" id="img9" height='300' width='300'src=''>
     </img>
-    <img id="img10" height='300' width='300'src=''>
+    <img class="stuff" id="img10" height='300' width='300'src=''>
     </img>
-    <img id="img11" height='300' width='300'src=''>
+    <img class="stuff" id="img11" height='300' width='300'src=''>
     </img>
-    <img id="img12" height='300' width='300'src=''>
+    <img class="stuff" id="img12" height='300' width='300'src=''>
     </img>
-    <img id="img13" height='300' width='300'src=''>
+    <img class="stuff" id="img13" height='300' width='300'src=''>
     </img>
-    <img id="img14" height='300' width='300'src=''>
+    <img class="stuff" id="img14" height='300' width='300'src=''>
     </img>
-    <img id="img15" height='300' width='300'src=''>
+    <img class="stuff" id="img15" height='300' width='300'src=''>
     </img>
-    <img id="img16" height='300' width='300'src=''>
+    <img class="stuff" id="img16" height='300' width='300'src=''>
     </img>
-    <img id="img17" height='300' width='300'src=''>
+    <img class="stuff" id="img17" height='300' width='300'src=''>
     </img>
-    <img id="img18" height='300' width='300'src=''>
+    <img class="stuff" id="img18" height='300' width='300'src=''>
     </img>
-    <img id="img19" height='300' width='300'src=''>
+    <img class="stuff" id="img19" height='300' width='300'src=''>
     </img>
-    <img id="img20" height='300' width='300'src=''>
-    </img> -->
+    <img class="stuff" id="img20" height='300' width='300'src=''>
+    </img>-->
   </div>
   </body>
 </html>
