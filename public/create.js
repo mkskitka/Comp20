@@ -124,6 +124,7 @@ function validateForm() {
 	var errorMessages = '';
 	var errorCounter = 0;
 	var textReg = new RegExp(/^[A-Za-z0-9,\. ]{3,50}$/, 'm');
+	var textReg = new RegExp(/^[a-zA-Z,\s\d\.]+$/i, 'm');
 	var photo = document.getElementById("photo");
 	var title = document.getElementById("recipe");
 	var cookTime = document.getElementById("cookTime");
@@ -143,35 +144,35 @@ function validateForm() {
 	} else if (!title.value.match(/^[a-zA-Z0-9 _-]+$/)) {
 		errorMessages += "Title must not contain special characters <br />";
 		title.setCustomValidity(" ");
-		errorCounter ++;	
+		errorCounter ++;
 	} if (cookTime.value == null || cookTime.value == "") {
 		errorMessages += "Cook Time must be filled out <br />";
 		cookTime.setCustomValidity(" ");
 		errorCounter ++;
 	} if (tag1.value == null || tag1.value == "") {
-		errorMessages += "Tag must be filled out <br />";
+		errorMessages += "Tags must be filled out <br />";
 		tag1.setCustomValidity(" ");
 		errorCounter ++;
-	} else if (!tag1.value.match(/^[a-zA-Z]+$/)) {
-		errorMessages += "Tags must only contain letters <br />";
+	} else if (!tag1.value.match(/^[a-z]+$/)) {
+		errorMessages += "Tags must only contain lowercase letters <br />";
 		tag1.setCustomValidity(" ");
-		errorCounter ++;	
+		errorCounter ++;
 	} if (tag2.value == null || tag2.value == "") {
-		errorMessages += "Tag must be filled out <br />";
+		errorMessages += "Tags must be filled out <br />";
 		tag2.setCustomValidity(" ");
 		errorCounter ++;
-	} else if (!tag2.value.match(/^[a-zA-Z]+$/)) {
-		errorMessages += "Tags must only contain letters <br />";
+	} else if (!tag2.value.match(/^[a-z]+$/)) {
+		errorMessages += "Tags must only contain lowercase letters <br />";
 		tag2.setCustomValidity(" ");
-		errorCounter ++;	
+		errorCounter ++;
 	} if (tag3.value == null || tag3.value == "") {
-		errorMessages += "Tag must be filled out <br />";
+		errorMessages += "Tags must be filled out <br />";
 		tag3.setCustomValidity(" ");
 		errorCounter ++;
-	} else if (!tag3.value.match(/^[a-zA-Z]+$/)) {
-		errorMessages += "Tags must only contain letters <br />";
+	} else if (!tag3.value.match(/^[a-z]+$/)) {
+		errorMessages += "Tags must only contain lowercase letters <br />";
 		tag3.setCustomValidity(" ");
-		errorCounter ++;	
+		errorCounter ++;
 	} if (ingredients.value == null || ingredients.value == "") {
 		errorMessages += "Ingredients must be filled out <br />";
 		ingredients.setCustomValidity(" ");
@@ -179,22 +180,22 @@ function validateForm() {
 	} else if (!ingredients.value.match(textReg)) {
 		errorMessages += "Ingredients must not contain special characters <br />";
 		ingredients.setCustomValidity(" ");
-		errorCounter ++;	
+		errorCounter ++;
 	} if (instructions.value == null || instructions.value == "") {
-		errorMessages += "Instructions must be filled out";	
+		errorMessages += "Instructions must be filled out";
 		instructions.setCustomValidity(" ");
 		errorCounter ++;
 	} else if (!instructions.value.match(textReg)) {
 		errorMessages += "Instructions must not contain special characters";
 		instructions.setCustomValidity(" ");
-		errorCounter ++;	
+		errorCounter ++;
 	}
-	
+
 	if (errorCounter > 0) {
 		document.getElementById("errors").className += "alert alert-danger";
 		document.getElementById("errors").innerHTML = errorMessages;
 		return false;
-	} else { 
+	} else {
 		return true
 	}
 }
