@@ -17,15 +17,6 @@
         }
     </style>
 
-
-<script>
-$(document).ready(function(){
-    $(".stuff").click(function(){
-       $(".details").slideToggle();
-    });
-});
-</script>
-
     <!--code for XML HTTP get request-->
     <script>
       function getRecipes() {
@@ -47,26 +38,8 @@ $(document).ready(function(){
       function displayRecipes(json_data) {
         for(i=0; i<20; i++){
           image = json_data[i].image;
-          //console.log(image);
-          //document.getElementById('img'+ (i+1)).src = image;
           document.getElementById('info').innerHTML += "<img class='stuff' style='PADDING-LEFT: 10px' style='PADDING-RIGHT: 10px' height='400' width='400'src=" + image + ">";
         }
-        /*var elem = document.getElementById("all_recipes");
-        var toDisplay = " ";
-        var image;
-        for (i = 0; i < json_data.length; i++) {
-          image = json_data[i].image;
-          toDisplay += "<p> Recipe title: " + json_data[i].title;
-          if (image != "") {
-            toDisplay += "<img height='50%' width='50%' src=" + image + " alt='recipe'>";
-          }
-          toDisplay += ", recipe id: " + json_data[i]._id + ", username: " +
-          json_data[i].username + ", cook time: " +
-           json_data[i].cookTime + ", difficulty: " + json_data[i].difficulty +
-           ", ingredients: " + json_data[i].ingredients + ", instructions: " +
-           json_data[i].instructions + "</p>";
-        }
-        elem.innerHTML = toDisplay;*/
       }
 
       function getTags() {
@@ -242,49 +215,6 @@ $(document).ready(function(){
        </script>
 
     <p class="logo"> <img src = "Feed.Your.Self.2.jpg" alt = "Feed Your Self"> </p>
-    
-  <div id="info">
-   <!-- <img class="stuff" id="img1" height='300' width='300'src=''>
-    </img>
-    <div class="details">ben is a person</div>
-    <img class="stuff" id="img2" height='300' width='300'src=''>
-    </img>
-    <img class="stuff" id="img3" height='300' width='300'src=''>
-    </img>
-    <img class="stuff" id="img4" height='300' width='300'src=''>
-    </img>
-    <img class="stuff" id="img5" height='300' width='300'src=''>
-    </img>
-    <img class="stuff" id="img6" height='300' width='300'src=''>
-    </img>
-    <img class="stuff" id="img7" height='300' width='300'src=''>
-    </img>
-    <img class="stuff" id="img8" height='300' width='300'src=''>
-    </img>
-    <img class="stuff" id="img9" height='300' width='300'src=''>
-    </img>
-    <img class="stuff" id="img10" height='300' width='300'src=''>
-    </img>
-    <img class="stuff" id="img11" height='300' width='300'src=''>
-    </img>
-    <img class="stuff" id="img12" height='300' width='300'src=''>
-    </img>
-    <img class="stuff" id="img13" height='300' width='300'src=''>
-    </img>
-    <img class="stuff" id="img14" height='300' width='300'src=''>
-    </img>
-    <img class="stuff" id="img15" height='300' width='300'src=''>
-    </img>
-    <img class="stuff" id="img16" height='300' width='300'src=''>
-    </img>
-    <img class="stuff" id="img17" height='300' width='300'src=''>
-    </img>
-    <img class="stuff" id="img18" height='300' width='300'src=''>
-    </img>
-    <img class="stuff" id="img19" height='300' width='300'src=''>
-    </img>
-    <img class="stuff" id="img20" height='300' width='300'src=''>
-    </img>-->
-  </div>
+    <div id="info"></div>
   </body>
 </html>
