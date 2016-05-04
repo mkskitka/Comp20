@@ -123,7 +123,7 @@ var loadFile = function(event) {
 function validateForm() {
 	var errorMessages = '';
 	var errorCounter = 0;
-	var textReg = new RegExp(/^[a-zA-Z0-9 _-]+$/, 'm');
+	var textReg = new RegExp(/^[a-zA-Z,\s\d\.]+$/i, 'm');
 	var photo = document.getElementById("photo");
 	var title = document.getElementById("recipe");
 	var cookTime = document.getElementById("cookTime");
@@ -149,27 +149,27 @@ function validateForm() {
 		cookTime.setCustomValidity(" ");
 		errorCounter ++;
 	} if (tag1.value == null || tag1.value == "") {
-		errorMessages += "Tag must be filled out <br />";
+		errorMessages += "Tags must be filled out <br />";
 		tag1.setCustomValidity(" ");
 		errorCounter ++;
-	} else if (!tag1.value.match(/^[a-zA-Z]+$/)) {
-		errorMessages += "Tags must only contain letters <br />";
+	} else if (!tag1.value.match(/^[a-z]+$/)) {
+		errorMessages += "Tags must only contain lowercase letters <br />";
 		tag1.setCustomValidity(" ");
 		errorCounter ++;	
 	} if (tag2.value == null || tag2.value == "") {
-		errorMessages += "Tag must be filled out <br />";
+		errorMessages += "Tags must be filled out <br />";
 		tag2.setCustomValidity(" ");
 		errorCounter ++;
-	} else if (!tag2.value.match(/^[a-zA-Z]+$/)) {
-		errorMessages += "Tags must only contain letters <br />";
+	} else if (!tag2.value.match(/^[a-z]+$/)) {
+		errorMessages += "Tags must only contain lowercase letters <br />";
 		tag2.setCustomValidity(" ");
 		errorCounter ++;	
 	} if (tag3.value == null || tag3.value == "") {
-		errorMessages += "Tag must be filled out <br />";
+		errorMessages += "Tags must be filled out <br />";
 		tag3.setCustomValidity(" ");
 		errorCounter ++;
-	} else if (!tag3.value.match(/^[a-zA-Z]+$/)) {
-		errorMessages += "Tags must only contain letters <br />";
+	} else if (!tag3.value.match(/^[a-z]+$/)) {
+		errorMessages += "Tags must only contain lowercase letters <br />";
 		tag3.setCustomValidity(" ");
 		errorCounter ++;	
 	} if (ingredients.value == null || ingredients.value == "") {
