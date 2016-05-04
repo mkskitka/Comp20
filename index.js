@@ -2,15 +2,15 @@ var express = require('express');
 var app = express();
 var mongodb = require('mongodb');
 var bodyParser = require('body-parser');
-var uri = 'mongodb://heroku_hrlt9p2b:ciu3131gcbehkjlr1cuiatdd1d@ds023550.mlab.com:23550/heroku_hrlt9p2b';
+var uri = 'mongodb://heroku_x17t296n:j1cft6gv69ojvsc0ho6lpbslpe@ds033125.mlab.com:33125/heroku_x17t296n';
 
-var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL ||  'mongodb://heroku_hrlt9p2b:ciu3131gcbehkjlr1cuiatdd1d@ds023550.mlab.com:23550/heroku_hrlt9p2b';
+var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL ||  'mongodb://heroku_x17t296n:j1cft6gv69ojvsc0ho6lpbslpe@ds033125.mlab.com:33125/heroku_x17t296n';
 var MongoClient = require('mongodb').MongoClient, format = require('util').format;
 var db = MongoClient.connect(mongoUri, function(error, databaseConnection) {
-	if(error) {
-		console.log(error);
-	}
-	db = databaseConnection;
+  if(error) {
+    console.log(error);
+  }
+  db = databaseConnection;
 });
 
 app.set('port', (process.env.PORT || 5000));
@@ -35,7 +35,7 @@ app.post('/sendRecipe', function(request, response) {
   response.header("Access-Control-Allow-Origin", "*");
   response.header("Access-Control-Allow-Headers", "X-Requested-With");
   var title = request.body.recipe;
-	var username = request.body.username;
+  var username = request.body.username;
   var imgName = request.body.photo;
   var image = request.body.bitImage;
   var cookTime = request.body.cookTime;
@@ -48,7 +48,7 @@ app.post('/sendRecipe', function(request, response) {
   var created_at = new Date();
   var toInsert = {
     "title": title,
-		"username": username,
+    "username": username,
     "imgName": imgName,
     "image": image,
     "cookTime": cookTime,
@@ -77,15 +77,22 @@ app.post('/sendRecipe', function(request, response) {
 });
 
 app.get('/getRecipes', function(request, response){//for home page
+  //to test on local host
   response.header("Access-Control-Allow-Origin", "*");
   response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
+  //response.set('Content-Type', 'application/json');
+  //var data = new Array();
   var error_msg = '{"error":"something went wrong!"}';
 
   db.collection('recipes', function(error, coll){
     if(!error){
       coll.find().sort({created_at: -1}).toArray(function(err, cursor){
         if(!err){
+          /*for (var count = 0; count < cursor.length; count++) {
+              data[data.length] = cursor[count];
+          }
+          response.send(data);*/
           response.send(cursor);
         }
         else{
@@ -100,11 +107,10 @@ app.get('/getRecipes', function(request, response){//for home page
 });
 
 app.post('/getMyRecipes', function(request, response){//for home page
-	//to test on local host
   response.header("Access-Control-Allow-Origin", "*");
   response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-	var usr_name = request.body.username;
+  var usr_name = request.body.username;
   var error_msg = '{"error":"something went wrong!"}';
 
   db.collection('recipes', function(error, coll){
@@ -125,25 +131,25 @@ app.post('/getMyRecipes', function(request, response){//for home page
 });
 
 app.post('/getTags', function(request, response){//on home page with limited search feature
-			response.header("Access-Control-Allow-Origin", "*");
-		  response.header("Access-Control-Allow-Headers", "X-Requested-With");
+      response.header("Access-Control-Allow-Origin", "*");
+      response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-			var tag = request.body.tag;
-		  var error_msg = '{"error":"something went wrong!"}';
+      var tag = request.body.tag;
+      var error_msg = '{"error":"something went wrong!"}';
 
-		  db.collection('recipes', function(error, coll){
-		    if(!error){
-		      coll.find( { $or: [{tag1: tag}, {tag2: tag}, {tag3: tag}] } ).sort({created_at: -1}).toArray(function(err, cursor){
-		        if(!err){
-		          response.send(cursor);
-		        }
-		        else{
-		          response.send(error_msg);
-		        }
-		      });
-		    }
-		    else {
-		      response.send(error_msg);
-		    }
-		  });
+      db.collection('recipes', function(error, coll){
+        if(!error){
+          coll.find( { $or: [{tag1: tag}, {tag2: tag}, {tag3: tag}] } ).sort({created_at: -1}).toArray(function(err, cursor){
+            if(!err){
+              response.send(cursor);
+            }
+            else{
+              response.send(error_msg);
+            }
+          });
+        }
+        else {
+          response.send(error_msg);
+        }
+      });
   });
