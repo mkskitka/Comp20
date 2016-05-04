@@ -63,11 +63,3 @@ color: #666666;
   text-align: center;
   font-size: 40px;
 }
-
-.hidden {
-  visibility: hidden;
-}
-
-.hidden:hover {
-  visibility: visible;
-}

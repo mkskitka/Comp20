@@ -36,7 +36,7 @@
       }
       function displayRecipes(json_data) {
         document.getElementById('info').innerHTML = " ";
-        for(i=0; i<20 && i < json_data.lenght; i++){
+        for(i=0; i<20 && i < json_data.length; i++){
           var image = json_data[i].image;
           var title = json_data[i].title;
           var cookTime = json_data[i].cookTime;
@@ -47,11 +47,9 @@
           var ingredients = json_data[i].ingredients;
           var instructions = json_data[i].instructions;
 
-          var all_data = title + ", " + cookTime + ", " + difficulty + ", " + tag1
-          + ", " + tag2 + ", " + tag3 + ", " + ingredients + ", " + instructions;
-
-          document.getElementById('info').innerHTML += "<div id=img" + i + "> <img class='stuff' style='PADDING-LEFT: 10px' style='PADDING-RIGHT: 10px' height='400' width='400'src=" + image +
-            "<span class=hidden>" + all_data + "</span></div>";
+          var all_data = "Title: " + title + ", Cook Time: " + cookTime + ", Difficulty: " + difficulty +
+          ", Tags: " + tag1 + ", " + tag2 + ", " + tag3 + ", Ingredients: " + ingredients + ", Instructions: " + instructions;
+          document.getElementById('info').innerHTML += "<img class='stuff' style='PADDING-LEFT: 10px' style='PADDING-RIGHT: 10px' height='400' width='400'src=" + image + ">";
         }
       }
       function getTags() {
