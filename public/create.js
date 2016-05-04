@@ -123,7 +123,7 @@ var loadFile = function(event) {
 function validateForm() {
 	var errorMessages = '';
 	var errorCounter = 0;
-	var textReg = new RegExp(/^[a-zA-Z0-9 _-]+$/, 'm');
+	var textReg = new RegExp(/^[A-Za-z0-9,\. ]{3,50}$/, 'm');
 	var photo = document.getElementById("photo");
 	var title = document.getElementById("recipe");
 	var cookTime = document.getElementById("cookTime");
