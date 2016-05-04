@@ -36,6 +36,7 @@
       }
       function displayRecipes(json_data) {
         document.getElementById('info').innerHTML = " ";
+
         for(i=0; i<20 && i < json_data.length; i++){
           image = json_data[i].image;
           title = json_data[i].title;
@@ -46,7 +47,7 @@
           var div = document.createElement("div");
           div.className = "recipeDivs";
           div.innerHTML = "<img class='stuff' style='PADDING-LEFT: 10px' style='PADDING-RIGHT: 10px' height='400' width='400'src=" + image + ">" + "Title: " + title + "<br /> Difficulty: " + difficulty + "<br /> Cook Time: " + cookTime + "<br /> Ingredients: " + ingredients + "<br /> Instructions: " + instructions;
-          document.body.appendChild(div);
+          document.getElementById('info').appendChild(div);
         }
       }
       function getTags() {
