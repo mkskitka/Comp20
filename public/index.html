@@ -37,19 +37,16 @@
       function displayRecipes(json_data) {
         document.getElementById('info').innerHTML = " ";
         for(i=0; i<20 && i < json_data.length; i++){
-          var image = json_data[i].image;
-          var title = json_data[i].title;
-          var cookTime = json_data[i].cookTime;
-          var difficulty = json_data[i].difficulty;
-          var tag1 = json_data[i].tag1;
-          var tag2 = json_data[i].tag2;
-          var tag3 = json_data[i].tag3;
-          var ingredients = json_data[i].ingredients;
-          var instructions = json_data[i].instructions;
-
-          var all_data = "Title: " + title + ", Cook Time: " + cookTime + ", Difficulty: " + difficulty +
-          ", Tags: " + tag1 + ", " + tag2 + ", " + tag3 + ", Ingredients: " + ingredients + ", Instructions: " + instructions;
-          document.getElementById('info').innerHTML += "<img class='stuff' style='PADDING-LEFT: 10px' style='PADDING-RIGHT: 10px' height='400' width='400'src=" + image + ">";
+          image = json_data[i].image;
+          title = json_data[i].title;
+          difficulty = json_data[i].difficulty;
+          cookTime = json_data[i].cookTime;
+          ingredients = json_data[i].ingredients;
+          instructions = json_data[i].instructions;
+          var div = document.createElement("div");
+          div.className = "recipeDivs";
+          div.innerHTML = "<img class='stuff' style='PADDING-LEFT: 10px' style='PADDING-RIGHT: 10px' height='400' width='400'src=" + image + ">" + "Title: " + title + "<br /> Difficulty: " + difficulty + "<br /> Cook Time: " + cookTime + "<br /> Ingredients: " + ingredients + "<br /> Instructions: " + instructions;
+          document.body.appendChild(div);
         }
       }
       function getTags() {
@@ -212,7 +209,7 @@
         }
        </script>
 
-    <p class="logo"> <img src = "Feed.Your.Self.2.jpg" alt = "Feed Your Self"> </p>
+    <p class="logo"> <img src = "feedyourself-1.png" alt = "Feed Your Self"> </p>
     <div id="info"></div>
   </body>
 </html>
