@@ -1,0 +1,78 @@
+.logo {
+  text-align: center;
+}
+
+.tabs {
+  text-align: right;
+  padding-right: 10%;
+}
+
+h1 {
+  text-align: center;
+}
+
+html {
+  height: 100%;
+}
+
+#store_name {
+  font-weight: bold;
+}
+
+#map_page {
+  height: 100%;
+  margin: 20px;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+#map_canvas {
+  height: 80%;
+  width: 100%;
+}
+
+.createForm img {
+  cursor: pointer;
+  max-width: 299px;
+  max-height: 272px;
+}
+
+#brand-img {
+  max-height: 100%;
+}
+
+#full-brand {
+  display: none;
+}
+
+.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+body{
+padding-top: 70px;
+background-color: #E1CAFF;
+font-family: 'Helvetica Neue', Arial, sans-serif;
+-webkit-font-smoothing: antialiased;
+font-size: x-small;
+color: #666666;
+}
+
+.profile_font {
+  text-align: center;
+  font-size: 40px;
+}
+
+.recipeDivs {
+  display: inline-block;
+  max-width: 400px;
+  text-indent: -10px;
+  color: black;
+  font-size: 12px;
+  padding: 10px;
+}
+
+#info{
+   text-align: center;
+  }
